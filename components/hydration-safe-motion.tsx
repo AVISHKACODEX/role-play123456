@@ -17,11 +17,17 @@ export default function HydrationSafeMotion({
   ...motionProps
 }: HydrationSafeMotionProps) {
   const isHydrated = useHydration();
-  const MotionComponent = motion[as];
 
   if (!isHydrated) {
     return <>{fallback || children}</>;
   }
 
-  return <MotionComponent {...motionProps}>{children}</MotionComponent>;
+  // Use the motion component directly with proper typing
+  const MotionComponent = motion[as as keyof typeof motion];
+  
+  return (
+    <MotionComponent {...motionProps}>
+      {children}
+    </MotionComponent>
+  );
 }
