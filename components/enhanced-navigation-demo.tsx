@@ -2,7 +2,9 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Button } from "@/components/ui/button";
+
+// Motion-enabled Button - using motion.button for proper motion support
+const MotionButton = motion.button;
 
 export default function EnhancedNavigationDemo() {
   const [activeTab, setActiveTab] = useState("home");
@@ -68,9 +70,9 @@ export default function EnhancedNavigationDemo() {
                 transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
                 className="relative"
               >
-                <Button
+                <MotionButton
                   onClick={() => setActiveTab(item.id)}
-                  className={`relative overflow-hidden px-6 py-3 rounded-xl font-medium transition-all duration-300 ${
+                  className={`relative overflow-hidden px-6 py-3 rounded-xl font-medium transition-all duration-300 border-0 focus:outline-none focus:ring-2 focus:ring-white/20 ${
                     activeTab === item.id
                       ? `bg-gradient-to-r ${item.color} text-white shadow-lg scale-105`
                       : "bg-white/10 text-gray-300 hover:bg-white/20 hover:scale-105"
@@ -110,7 +112,7 @@ export default function EnhancedNavigationDemo() {
                       transition={{ duration: 0.3 }}
                     />
                   )}
-                </Button>
+                </MotionButton>
               </motion.div>
             ))}
           </div>
