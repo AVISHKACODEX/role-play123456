@@ -222,6 +222,7 @@ export default function ContactPage() {
               initial={{ y: 20, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.7 }}
+              suppressHydrationWarning
             >
               Join our vibrant community and connect with fellow roleplayers in
               Hill City
@@ -337,7 +338,7 @@ export default function ContactPage() {
               transition={{ duration: 0.2 }}
               suppressHydrationWarning
             >
-              <h3 className="text-2xl font-bold text-white mb-6 text-center">
+              <h3 className="text-2xl font-bold text-white mb-6 text-center" suppressHydrationWarning>
                 Members Online
               </h3>
 
@@ -472,10 +473,10 @@ export default function ContactPage() {
             transition={{ duration: 0.2 }}
             suppressHydrationWarning
           >
-            <h3 className="text-3xl font-bold text-white mb-6">
+            <h3 className="text-3xl font-bold text-white mb-6" suppressHydrationWarning>
               Hill City Roleplay Server
             </h3>
-            <p className="text-white/80 text-lg mb-6 max-w-3xl mx-auto">
+            <p className="text-white/80 text-lg mb-6 max-w-3xl mx-auto" suppressHydrationWarning>
               Experience the most immersive roleplay environment in FiveM. Join
               thousands of players in a living, breathing city where every
               choice matters and every story unfolds.
@@ -526,7 +527,7 @@ export default function ContactPage() {
             transition={{ duration: 0.2 }}
             suppressHydrationWarning
           >
-            <div className="text-center mb-8">
+            <div className="text-center mb-8" suppressHydrationWarning>
               <h3 className="text-3xl font-bold text-white mb-4">
                 Meet Our Developer
               </h3>
@@ -536,7 +537,7 @@ export default function ContactPage() {
             </div>
 
             {/* Expandable Developer Details */}
-            <div className="bg-black/30 rounded-xl border border-white/20 overflow-hidden">
+            <div className="bg-black/30 rounded-xl border border-white/20 overflow-hidden" suppressHydrationWarning>
               <button
                 onClick={() => setIsExpanded(!isExpanded)}
                 className="w-full px-6 py-4 text-left flex items-center justify-between hover:bg-white/10 transition-colors duration-200"
@@ -578,6 +579,7 @@ export default function ContactPage() {
                 }}
                 transition={{ duration: 0.3, ease: "easeInOut" }}
                 className="overflow-hidden"
+                suppressHydrationWarning
               >
                 <div className="px-6 pb-6 space-y-6">
                   <div className="bg-black/20 rounded-xl p-6 border border-white/10">

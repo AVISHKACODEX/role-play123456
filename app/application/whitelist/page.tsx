@@ -106,10 +106,11 @@ export default function WhitelistApplicationPage() {
     >
       {/* Background Image */}
       <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        className="absolute inset-0 bg-cover bg-bottom bg-no-repeat bg-fixed"
         style={{
           backgroundImage: "url('/images/city-background.jpeg')",
         }}
+        suppressHydrationWarning
       >
         <div className="absolute inset-0 bg-black/40" />
       </div>

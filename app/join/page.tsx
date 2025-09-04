@@ -6,6 +6,7 @@ import { Card } from "@/components/ui/card";
 import Image from "next/image";
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
+import ClientOnly from "@/components/client-only";
 
 interface ServerInfo {
   name: string;
@@ -121,62 +122,55 @@ export default function JoinPage() {
       {/* Dark overlay for readability */}
       <div className="fixed inset-0 bg-black/60" suppressHydrationWarning />
 
-      {/* Floating Particles Background */}
-      <div
-        className="fixed inset-0 overflow-hidden pointer-events-none"
-        suppressHydrationWarning
-      >
-        {[...Array(20)].map((_, i) => {
-          // Use deterministic positioning based on index to avoid hydration mismatch
-          const positions = [
-            { left: 13, top: 23 },
-            { left: 27, top: 47 },
-            { left: 43, top: 17 },
-            { left: 63, top: 37 },
-            { left: 83, top: 27 },
-            { left: 17, top: 63 },
-            { left: 37, top: 83 },
-            { left: 57, top: 73 },
-            { left: 77, top: 53 },
-            { left: 93, top: 43 },
-            { left: 7, top: 83 },
-            { left: 33, top: 13 },
-            { left: 53, top: 93 },
-            { left: 73, top: 17 },
-            { left: 87, top: 67 },
-            { left: 22, top: 33 },
-            { left: 47, top: 57 },
-            { left: 67, top: 43 },
-            { left: 82, top: 77 },
-            { left: 97, top: 23 },
-          ];
-          const pos = positions[i % positions.length];
-          const duration = 8 + (i % 4); // Deterministic duration
-          const delay = i * 0.25; // Deterministic delay
+      {/* Floating Particles Background - client only to avoid hydration mismatches */}
+      <ClientOnly>
+        <div
+          className="fixed inset-0 overflow-hidden pointer-events-none"
+          suppressHydrationWarning
+        >
+          {[...Array(20)].map((_, i) => {
+            // Deterministic positions to keep stable across renders
+            const positions = [
+              { left: 13, top: 23 },
+              { left: 27, top: 47 },
+              { left: 43, top: 17 },
+              { left: 63, top: 37 },
+              { left: 83, top: 27 },
+              { left: 17, top: 63 },
+              { left: 37, top: 83 },
+              { left: 57, top: 73 },
+              { left: 77, top: 53 },
+              { left: 93, top: 43 },
+              { left: 7, top: 83 },
+              { left: 33, top: 13 },
+              { left: 53, top: 93 },
+              { left: 73, top: 17 },
+              { left: 87, top: 67 },
+              { left: 22, top: 33 },
+              { left: 47, top: 57 },
+              { left: 67, top: 43 },
+              { left: 82, top: 77 },
+              { left: 97, top: 23 },
+            ];
+            const pos = positions[i % positions.length];
+            const duration = 8 + (i % 4);
+            const delay = i * 0.25;
 
-          return (
-            <motion.div
-              key={i}
-              className="absolute w-2 h-2 bg-white/20 rounded-full"
-              style={{
-                left: `${pos.left}%`,
-                top: `${pos.top}%`,
-              }}
-              animate={{
-                y: [0, -100, 0],
-                opacity: [0, 1, 0],
-                scale: [0, 1, 0],
-              }}
-              transition={{
-                duration,
-                repeat: Infinity,
-                delay,
-                ease: "easeInOut",
-              }}
-            />
-          );
-        })}
-      </div>
+            return (
+              <motion.div
+                key={i}
+                className="absolute w-2 h-2 bg-white/20 rounded-full"
+                style={{
+                  left: `${pos.left}%`,
+                  top: `${pos.top}%`,
+                }}
+                animate={{ y: [0, -100, 0], opacity: [0, 1, 0], scale: [0, 1, 0] }}
+                transition={{ duration, repeat: Infinity, delay, ease: "easeInOut" }}
+              />
+            );
+          })}
+        </div>
+      </ClientOnly>
 
       {/* Content */}
       <div className="relative z-10">
