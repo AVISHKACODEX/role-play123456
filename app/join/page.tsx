@@ -220,40 +220,7 @@ export default function JoinPage() {
             >
               Hill City Roleplay
             </motion.h1>
-            <motion.div
-              className="flex items-center gap-2 mb-2"
-              initial={{ y: 20, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ duration: 0.8, delay: 0.9 }}
-            >
-              <span
-                className={`font-semibold ${getStatusColor(
-                  serverInfo?.status ?? "online"
-                )}`}
-              >
-                {isLoading
-                  ? "Checking status..."
-                  : serverInfo
-                  ? serverInfo.status.charAt(0).toUpperCase() +
-                    serverInfo.status.slice(1)
-                  : "Unknown"}
-              </span>
-              {serverInfo && (
-                <span className="text-sm text-white/70">
-                  {serverInfo.playerCount} / {serverInfo.maxPlayers} players
-                </span>
-              )}
-            </motion.div>
-            {serverInfo?.uptime && (
-              <motion.span
-                className="text-xs text-white/60"
-                initial={{ y: 20, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ duration: 0.8, delay: 1.1 }}
-              >
-                Uptime: {serverInfo.uptime}
-              </motion.span>
-            )}
+            {/* Status/players/uptime intentionally removed from UI */}
           </motion.div>
 
           {/* Main Actions */}
