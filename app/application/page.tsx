@@ -139,7 +139,7 @@ export default function ApplicationPage() {
                     alt="Medical"
                     width={500}
                     height={500}
-                    className="pointer-events-none select-none absolute bottom-0 right-0 w-28 md:w-36 lg:w-40 object-contain opacity-95"
+                    className="pointer-events-none select-none absolute bottom-0 right-0 w-40 md:w-52 lg:w-60 object-contain opacity-95"
                   />
                 </motion.div>
               </Link>
