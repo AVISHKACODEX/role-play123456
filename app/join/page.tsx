@@ -261,7 +261,7 @@ export default function JoinPage() {
                 className="w-full sm:w-auto px-8 py-4 text-lg font-semibold rounded-lg bg-white text-neutral-900 hover:bg-gray-100 transition"
                 asChild
               >
-                <a href="fivem://connect/your-server-ip">Play Now</a>
+                <a href="fivem://connect/your-actual-server-ip:30120">Play Now</a>
               </Button>
             </motion.div>
             <motion.div variants={buttonVariants}>

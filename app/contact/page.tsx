@@ -27,6 +27,7 @@ export default function ContactPage() {
   const [isLoading, setIsLoading] = useState(true);
   const [isLoaded, setIsLoaded] = useState(false);
   const [isExpanded, setIsExpanded] = useState(false);
+  const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
     const fetchDiscordData = async () => {
@@ -262,11 +263,24 @@ export default function ContactPage() {
                         ? `${discordData.presence_count} Members Online`
                         : "Join Our Community"}
                     </p>
-                    <p className="text-white/80">
+                    <p className="text-white/80 mb-2">
                       {discordData.presence_count > 0
                         ? `Join our growing community of ${discordData.name}`
                         : "Connect with fellow roleplayers in Hill City"}
                     </p>
+                    {discordData.members && discordData.members.length > 0 && (
+                      <div className="flex justify-center space-x-4 text-sm">
+                        <span className="text-green-400">
+                          🟢 {discordData.members.filter(m => m.status === 'online').length} Online
+                        </span>
+                        <span className="text-yellow-400">
+                          🟡 {discordData.members.filter(m => m.status === 'idle').length} Idle
+                        </span>
+                        <span className="text-red-400">
+                          🔴 {discordData.members.filter(m => m.status === 'dnd').length} Busy
+                        </span>
+                      </div>
+                    )}
                   </div>
                 ) : (
                   <div>
@@ -353,8 +367,31 @@ export default function ContactPage() {
                   ))}
                 </div>
               ) : discordData && discordData.members.length > 0 ? (
-                <div className="space-y-3 max-h-80 overflow-y-auto">
-                  {discordData.members.slice(0, 10).map((member) => (
+                <div className="space-y-3 max-h-96 overflow-y-auto">
+                  {/* Member Count Header */}
+                  <div className="text-center pb-3 border-b border-white/20">
+                    <p className="text-white/80 text-sm">
+                      {discordData.members.length} members currently online
+                    </p>
+                  </div>
+                  
+                  {/* Search Bar */}
+                  <div className="px-3">
+                    <input
+                      type="text"
+                      placeholder="Search members..."
+                      value={searchTerm}
+                      onChange={(e) => setSearchTerm(e.target.value)}
+                      className="w-full px-3 py-2 bg-white/10 border border-white/20 rounded-lg text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    />
+                  </div>
+                  
+                  {/* Filtered Members List */}
+                  {discordData.members
+                    .filter((member) =>
+                      member.username.toLowerCase().includes(searchTerm.toLowerCase())
+                    )
+                    .map((member) => (
                     <div
                       key={member.id}
                       className="flex items-center space-x-3 p-3 rounded-lg hover:bg-white/10 transition-colors duration-200"
@@ -380,14 +417,24 @@ export default function ContactPage() {
                             Playing {member.game.name}
                           </p>
                         )}
+                        <p className="text-white/40 text-xs">
+                          Status: {member.status}
+                        </p>
                       </div>
                     </div>
                   ))}
-                  {discordData.members.length > 10 && (
-                    <p className="text-white/60 text-center py-2">
-                      +{discordData.members.length - 10} more members online
+                  
+                  {/* Total Members Footer */}
+                  <div className="text-center pt-3 border-t border-white/20">
+                    <p className="text-white/60 text-sm">
+                      {searchTerm 
+                        ? `Showing ${discordData.members.filter((member) =>
+                            member.username.toLowerCase().includes(searchTerm.toLowerCase())
+                          ).length} of ${discordData.members.length} online members`
+                        : `Showing all ${discordData.members.length} online members`
+                      }
                     </p>
-                  )}
+                  </div>
                 </div>
               ) : (
                 <div className="text-center py-8">
