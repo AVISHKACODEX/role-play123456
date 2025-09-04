@@ -528,9 +528,12 @@ export default function ContactPage() {
             suppressHydrationWarning
           >
             <div className="text-center mb-8" suppressHydrationWarning>
-              <h3 className="text-3xl font-bold text-white mb-4">
+              <h3 className="text-3xl font-bold text-white mb-2">
                 Meet Our Developer
               </h3>
+              <p className="text-white/90 text-xl font-semibold mb-2">
+                Ruvindu Gayanga (M E L L O W Z Y)
+              </p>
               <p className="text-white/80 text-lg">
                 The creative mind behind Hill City Roleplay's immersive systems
               </p>
@@ -715,6 +718,28 @@ export default function ContactPage() {
                           WhatsApp: +94 76 019 4974
                         </Button>
                       </motion.div>
+
+                      <div className="mt-4">
+                        <Button
+                          className="w-full bg-[#5865F2] hover:bg-[#4752C4] text-white py-4 text-lg font-medium rounded-lg transition-all duration-200"
+                          onClick={() =>
+                            window.open(
+                              "https://discord.com/users/1301976129053392958",
+                              "_blank"
+                            )
+                          }
+                        >
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24"
+                            fill="currentColor"
+                            className="w-6 h-6 mr-3"
+                          >
+                            <path d="M20.317 4.369a19.791 19.791 0 00-4.885-1.515.074.074 0 00-.079.037c-.211.375-.444.864-.608 1.249a18.27 18.27 0 00-5.487 0 12.26 12.26 0 00-.617-1.249.077.077 0 00-.079-.037 19.736 19.736 0 00-4.885 1.515.07.07 0 00-.032.027C1.146 8.485.5 12.51.864 16.497a.082.082 0 00.031.055 19.9 19.9 0 005.987 3.012.078.078 0 00.084-.027c.461-.63.873-1.295 1.226-1.994a.076.076 0 00-.042-.104 12.88 12.88 0 01-1.84-.878.077.077 0 01-.008-.128c.123-.093.246-.19.363-.288a.074.074 0 01.078-.01c3.863 1.766 8.042 1.766 11.863 0a.074.074 0 01.079.01c.118.098.24.195.363.288a.077.077 0 01-.007.128c-.59.35-1.206.641-1.84.878a.076.076 0 00-.041.105c.36.698.772 1.363 1.226 1.994a.077.077 0 00.084.027 19.876 19.876 0 005.987-3.012.077.077 0 00.031-.055c.5-5.18-.838-9.17-3.548-12.101a.06.06 0 00-.031-.027zM8.02 15.331c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.419 0 1.334-.956 2.419-2.157 2.419zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.419 0 1.334-.947 2.419-2.157 2.419z" />
+                          </svg>
+                          Message on Discord
+                        </Button>
+                      </div>
                     </div>
                   </div>
                 </div>
