@@ -70,9 +70,9 @@ export default function ApplicationPage() {
                     whileHover={{ x: 600, opacity: 1 }}
                     transition={{ duration: 0.8 }}
                   />
-                  <div className="p-6 md:p-8 pr-28 md:pr-36 relative z-10">
+                  <div className="p-5 sm:p-6 md:p-8 pr-24 sm:pr-28 md:pr-36 relative z-10">
                     <h3 className="text-2xl md:text-3xl font-bold text-white mb-2">Whitelist Application</h3>
-                    <p className="text-white/70 mb-6">Complete the whitelist application required to access the server</p>
+                    <p className="text-white/70 mb-4 sm:mb-6">Complete the whitelist application required to access the server</p>
                     <Button className="bg-white text-neutral-900 hover:bg-gray-100 rounded-xl">Get Started</Button>
                   </div>
                   {/* contextual image */}
@@ -81,7 +81,7 @@ export default function ApplicationPage() {
                     alt="Whitelist"
                     width={500}
                     height={500}
-                    className="pointer-events-none select-none absolute bottom-0 right-0 w-28 md:w-36 lg:w-40 object-contain opacity-90"
+                    className="pointer-events-none select-none absolute bottom-0 right-0 w-24 sm:w-28 md:w-36 lg:w-40 object-contain opacity-90"
                   />
                 </motion.div>
               </Link>
@@ -100,9 +100,9 @@ export default function ApplicationPage() {
                     whileHover={{ x: 600, opacity: 1 }}
                     transition={{ duration: 0.8 }}
                   />
-                  <div className="p-6 md:p-8 pr-28 md:pr-36 relative z-10">
+                  <div className="p-5 sm:p-6 md:p-8 pr-24 sm:pr-28 md:pr-36 relative z-10">
                     <h3 className="text-2xl md:text-3xl font-bold text-white mb-2">Police Application</h3>
-                    <p className="text-white/70 mb-6">Join the Hill City Police Department and protect the law</p>
+                    <p className="text-white/70 mb-4 sm:mb-6">Join the Hill City Police Department and protect the law</p>
                     <Button className="bg-white/10 hover:bg-white/20 text-white border border-white/20 rounded-xl">Apply Now</Button>
                   </div>
                   <Image
@@ -110,7 +110,7 @@ export default function ApplicationPage() {
                     alt="Police"
                     width={500}
                     height={500}
-                    className="pointer-events-none select-none absolute bottom-0 right-0 w-28 md:w-36 lg:w-40 object-contain opacity-95"
+                    className="pointer-events-none select-none absolute bottom-0 right-0 w-24 sm:w-28 md:w-36 lg:w-40 object-contain opacity-95"
                   />
                 </motion.div>
               </Link>
@@ -129,9 +129,9 @@ export default function ApplicationPage() {
                     whileHover={{ x: 600, opacity: 1 }}
                     transition={{ duration: 0.8 }}
                   />
-                  <div className="p-6 md:p-8 pr-28 md:pr-36 relative z-10">
+                  <div className="p-5 sm:p-6 md:p-8 pr-28 md:pr-36 relative z-10">
                     <h3 className="text-2xl md:text-3xl font-bold text-white mb-2">Medical Application</h3>
-                    <p className="text-white/70 mb-6">Join the Hill City Hospital medical staff and save lives</p>
+                    <p className="text-white/70 mb-4 sm:mb-6">Join the Hill City Hospital medical staff and save lives</p>
                     <Button className="bg-white/10 hover:bg-white/20 text-white border border-white/20 rounded-xl">Join Team</Button>
                   </div>
                   <Image
@@ -139,7 +139,7 @@ export default function ApplicationPage() {
                     alt="Medical"
                     width={500}
                     height={500}
-                    className="pointer-events-none select-none absolute bottom-0 right-0 w-40 md:w-52 lg:w-60 object-contain opacity-95"
+                    className="pointer-events-none select-none absolute bottom-0 right-0 w-32 sm:w-40 md:w-52 lg:w-60 object-contain opacity-95"
                   />
                 </motion.div>
               </Link>

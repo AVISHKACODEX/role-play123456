@@ -41,16 +41,22 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       {
-        url: "/logo/FinalLogo.png",
+        url: "/images/animated-logo.gif?v=2",
+        sizes: "any",
+        type: "image/gif",
+      },
+      {
+        url: "/logo/FinalLogo.png?v=2",
         sizes: "any",
         type: "image/png",
       },
       {
-        url: "/favicon.svg",
+        url: "/favicon.svg?v=2",
         type: "image/svg+xml",
       },
     ],
-    apple: "/logo/FinalLogo.png",
+    apple: "/logo/FinalLogo.png?v=2",
+    shortcut: "/images/animated-logo.gif?v=2",
   },
 };
 
@@ -80,9 +86,9 @@ export default function RootLayout({
             <ThemeInitializer />
             <AnimatedLogo />
             <LinkPreloader />
+            <Toaster />
           </ClientOnly>
           <Suspense fallback={null}>{children}</Suspense>
-          <Toaster />
         </ThemeProvider>
         <Analytics />
       </body>

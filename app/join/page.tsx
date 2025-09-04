@@ -7,6 +7,7 @@ import Image from "next/image";
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import ClientOnly from "@/components/client-only";
+import { useHydration } from "@/hooks/use-hydration";
 
 interface ServerInfo {
   name: string;
@@ -21,6 +22,7 @@ export default function JoinPage() {
   const [serverInfo, setServerInfo] = useState<ServerInfo | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [isLoaded, setIsLoaded] = useState(false);
+  const isHydrated = useHydration();
 
   // Fetch server information
   const fetchServerInfo = async () => {
@@ -105,6 +107,15 @@ export default function JoinPage() {
     tap: { scale: 0.95 },
   };
 
+  // Avoid rendering complex animated content until client is hydrated
+  if (!isHydrated) {
+    return (
+      <div className="min-h-screen bg-black text-white flex items-center justify-center" suppressHydrationWarning>
+        Loading...
+      </div>
+    );
+  }
+
   return (
     <div
       className="min-h-screen relative overflow-hidden"
@@ -179,7 +190,7 @@ export default function JoinPage() {
           className="max-w-3xl mx-auto pt-32 pb-16 px-4 flex flex-col items-center text-white"
           variants={containerVariants}
           initial="hidden"
-          animate={isLoaded ? "visible" : "hidden"}
+          animate={isLoaded && isHydrated ? "visible" : "hidden"}
         >
           {/* Logo and title */}
           <motion.div
@@ -247,12 +258,12 @@ export default function JoinPage() {
 
           {/* Main Actions */}
           <motion.div
-            className="flex flex-col sm:flex-row gap-4 w-full justify-center mb-10"
+            className="flex flex-col sm:flex-row gap-4 w-full justify-center mb-10 px-2"
             variants={itemVariants}
           >
             <motion.div variants={buttonVariants}>
               <Button
-                className="w-full sm:w-auto px-8 py-4 text-lg font-semibold rounded-lg bg-white text-neutral-900 hover:bg-gray-100 transition"
+                className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg font-semibold rounded-lg bg-white text-neutral-900 hover:bg-gray-100 transition"
                 asChild
               >
                 <a href="fivem://connect/your-actual-server-ip:30120">Play Now</a>
@@ -260,7 +271,7 @@ export default function JoinPage() {
             </motion.div>
             <motion.div variants={buttonVariants}>
               <Button
-                className="w-full sm:w-auto px-8 py-4 text-lg font-semibold rounded-lg bg-[#5865F2] text-white hover:bg-[#4752C4] transition"
+                className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg font-semibold rounded-lg bg-[#5865F2] text-white hover:bg-[#4752C4] transition"
                 onClick={() =>
                   window.open("https://discord.gg/hillcityrp", "_blank")
                 }

@@ -545,3 +545,52 @@ html {
   background: rgba(102, 126, 234, 0.3);
   color: inherit;
 }
+
+/* --- Smooth global experience additions --- */
+:root {
+	--ease-smooth: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+html {
+	scroll-behavior: smooth;
+	text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+/* Make interactions feel consistent without altering design */
+a,
+button,
+[role="button"],
+label,
+input,
+select,
+textarea,
+.card,
+.link,
+.interactive {
+	transition: color .2s var(--ease-smooth),
+		background-color .2s var(--ease-smooth),
+		border-color .2s var(--ease-smooth),
+		box-shadow .2s var(--ease-smooth),
+		opacity .2s var(--ease-smooth),
+		transform .2s var(--ease-smooth);
+	-webkit-tap-highlight-color: transparent;
+}
+
+/* Respect user preference to reduce motion */
+@media (prefers-reduced-motion: reduce) {
+	*, *::before, *::after {
+		animation-duration: 0.001ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.001ms !important;
+		scroll-behavior: auto !important;
+	}
+}
+
+/* Improve focus visibility without changing components */
+:focus-visible {
+	outline: none;
+	box-shadow: 0 0 0 2px rgba(255,255,255,0.25), 0 0 0 4px rgba(59,130,246,0.35);
+	border-radius: 0.5rem;
+}

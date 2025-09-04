@@ -39,13 +39,9 @@ export default function HomePage() {
     },
   };
 
-  // Show loading state during hydration to prevent mismatches
+  // Show nothing until hydrated to avoid mismatches
   if (!isHydrated) {
-    return (
-      <div className="min-h-screen relative overflow-hidden bg-black flex items-center justify-center">
-        <div className="text-white text-2xl">Loading...</div>
-      </div>
-    );
+    return null;
   }
 
   return (
@@ -228,7 +224,7 @@ export default function HomePage() {
               </motion.div>
 
               <motion.p
-                className="text-xl md:text-2xl text-gray-300 max-w-4xl mx-auto mb-12 leading-relaxed"
+                className="text-base sm:text-lg md:text-2xl text-gray-300 max-w-4xl mx-auto mb-8 md:mb-12 leading-relaxed px-2"
                 variants={itemVariants}
                 whileHover={{
                   scale: 1.02,
@@ -245,9 +241,10 @@ export default function HomePage() {
                 variants={itemVariants}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
+                className="px-2"
               >
                 <Button
-                  className="bg-transparent border-2 border-white text-white px-24 py-8 text-3xl font-black rounded-full shadow-2xl hover:shadow-white/25 hover:text-black transition-all duration-300"
+                  className="bg-transparent border-2 border-white text-white px-8 sm:px-16 md:px-24 py-4 sm:py-6 md:py-8 text-lg sm:text-2xl md:text-3xl font-black rounded-full shadow-2xl hover:shadow-white/25 hover:text-black transition-all duration-300 w-full sm:w-auto"
                   asChild
                 >
                   <a href="/join" className="relative overflow-hidden group">
