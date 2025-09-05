@@ -65,8 +65,8 @@ export default function WhitelistApplicationPage() {
         const errorData = await response.json();
         throw new Error(errorData.error || "Failed to submit application");
       }
-    } catch (error) {
-      console.error("Error submitting application:", error);
+    } catch (err) {
+      console.error("Error submitting application:", err);
       error(
         "❌ Submission Failed",
         "There was an error submitting your application. Please check your internet connection and try again.",

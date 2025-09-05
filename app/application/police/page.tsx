@@ -86,8 +86,8 @@ export default function PoliceApplicationPage() {
       } else {
         throw new Error("Failed to submit application");
       }
-    } catch (error) {
-      console.error("Error submitting application:", error);
+    } catch (err) {
+      console.error("Error submitting application:", err);
       error(
         "❌ Application Failed",
         "Unable to submit your police application. Please check your connection and try again.",
