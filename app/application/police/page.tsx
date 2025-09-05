@@ -10,8 +10,10 @@ import { Textarea } from "@/components/ui/textarea";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { useState } from "react";
+import { useModernToastContext } from "@/components/modern-toast-provider";
 
 export default function PoliceApplicationPage() {
+  const { success, error } = useModernToastContext();
   const [formData, setFormData] = useState({
     // Player Information Section (OOC)
     fullName: "",
@@ -61,8 +63,10 @@ export default function PoliceApplicationPage() {
       });
 
       if (response.ok) {
-        alert(
-          "Police application submitted successfully! We'll review your application and get back to you soon."
+        success(
+          "🚔 Police Application Submitted!",
+          "Your application has been received. Our recruitment team will review it and contact you via Discord within 24-48 hours.",
+          { duration: 8000 }
         );
         // Reset form
         setFormData({
@@ -84,8 +88,10 @@ export default function PoliceApplicationPage() {
       }
     } catch (error) {
       console.error("Error submitting application:", error);
-      alert(
-        "There was an error submitting your application. Please try again or contact support."
+      error(
+        "❌ Application Failed",
+        "Unable to submit your police application. Please check your connection and try again.",
+        { duration: 6000 }
       );
     }
   };

@@ -10,10 +10,10 @@ import { Textarea } from "@/components/ui/textarea";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { useState } from "react";
-import { useToast } from "@/hooks/use-toast";
+import { useModernToastContext } from "@/components/modern-toast-provider";
 
 export default function MedicalApplicationPage() {
-  const { toast } = useToast();
+  const { success, error } = useModernToastContext();
   const [formData, setFormData] = useState({
     // IC Section
     fullName: "",
@@ -66,12 +66,11 @@ export default function MedicalApplicationPage() {
       });
 
       if (response.ok) {
-        toast({
-          title: "✅ Application Submitted Successfully!",
-          description:
-            "We'll review your medical application and get back to you soon.",
-          variant: "default",
-        });
+        success(
+          "🏥 Medical Application Submitted!",
+          "Your application has been received by our medical department. We'll review it and contact you via Discord within 24-48 hours.",
+          { duration: 8000 }
+        );
         // Reset form
         setFormData({
           fullName: "",
@@ -88,12 +87,11 @@ export default function MedicalApplicationPage() {
       }
     } catch (error) {
       console.error("Error submitting application:", error);
-      toast({
-        title: "❌ Submission Failed",
-        description:
-          "There was an error submitting your application. Please try again or contact support.",
-        variant: "destructive",
-      });
+      error(
+        "❌ Application Failed",
+        "Unable to submit your medical application. Please check your connection and try again.",
+        { duration: 6000 }
+      );
     }
   };
 

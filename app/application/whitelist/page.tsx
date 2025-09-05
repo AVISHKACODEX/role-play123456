@@ -8,8 +8,10 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { useState } from "react";
+import { useModernToastContext } from "@/components/modern-toast-provider";
 
 export default function WhitelistApplicationPage() {
+  const { success, error } = useModernToastContext();
   const [formData, setFormData] = useState({
     steam_link: "",
     steam_name: "",
@@ -43,8 +45,10 @@ export default function WhitelistApplicationPage() {
       });
 
       if (response.ok) {
-        alert(
-          "Application submitted successfully! We'll review your application and get back to you soon."
+        success(
+          "🎉 Application Submitted Successfully!",
+          "We'll review your whitelist application and get back to you soon. Check your Discord for updates!",
+          { duration: 8000 }
         );
         // Reset form
         setFormData({
@@ -63,8 +67,10 @@ export default function WhitelistApplicationPage() {
       }
     } catch (error) {
       console.error("Error submitting application:", error);
-      alert(
-        "There was an error submitting your application. Please try again or contact support."
+      error(
+        "❌ Submission Failed",
+        "There was an error submitting your application. Please check your internet connection and try again.",
+        { duration: 6000 }
       );
     }
   };

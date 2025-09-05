@@ -10,6 +10,7 @@ import ClientOnly from "@/components/client-only";
 import ThemeInitializer from "@/components/theme-initializer";
 import LinkPreloader from "@/components/link-preloader";
 import { Toaster } from "@/components/ui/toaster";
+import { ModernToastProvider } from "@/components/modern-toast-provider";
 import { Suspense } from "react";
 
 // Configure fonts - must be called and assigned to const in module scope
@@ -82,13 +83,15 @@ export default function RootLayout({
           disableTransitionOnChange
           storageKey="hill-city-theme"
         >
-          <ClientOnly>
-            <ThemeInitializer />
-            <AnimatedLogo />
-            <LinkPreloader />
-            <Toaster />
-          </ClientOnly>
-          <Suspense fallback={null}>{children}</Suspense>
+          <ModernToastProvider>
+            <ClientOnly>
+              <ThemeInitializer />
+              <AnimatedLogo />
+              <LinkPreloader />
+              <Toaster />
+            </ClientOnly>
+            <Suspense fallback={null}>{children}</Suspense>
+          </ModernToastProvider>
         </ThemeProvider>
         <Analytics />
       </body>
