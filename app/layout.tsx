@@ -42,22 +42,28 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       {
-        url: "/images/animated-logo.gif?v=2",
-        sizes: "any",
-        type: "image/gif",
-      },
-      {
-        url: "/logo/FinalLogo.png?v=2",
-        sizes: "any",
+        url: "/logo/FinalLogo.png",
+        sizes: "16x16",
         type: "image/png",
       },
       {
-        url: "/favicon.svg?v=2",
-        type: "image/svg+xml",
+        url: "/logo/FinalLogo.png",
+        sizes: "32x32",
+        type: "image/png",
+      },
+      {
+        url: "/logo/FinalLogo.png",
+        sizes: "48x48",
+        type: "image/png",
+      },
+      {
+        url: "/logo/FinalLogo.png",
+        sizes: "192x192",
+        type: "image/png",
       },
     ],
-    apple: "/logo/FinalLogo.png?v=2",
-    shortcut: "/images/animated-logo.gif?v=2",
+    apple: "/logo/FinalLogo.png",
+    shortcut: "/logo/FinalLogo.png",
   },
 };
 
