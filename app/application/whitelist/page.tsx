@@ -4,6 +4,7 @@ import Navigation from "@/components/navigation";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import Link from "next/link";
 import { motion } from "framer-motion";
@@ -21,9 +22,10 @@ export default function WhitelistApplicationPage() {
     email: "",
     fullname: "",
     age: "",
+    character_backstory: "",
   });
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData((prev) => ({
       ...prev,
@@ -60,6 +62,7 @@ export default function WhitelistApplicationPage() {
           email: "",
           fullname: "",
           age: "",
+          character_backstory: "",
         });
       } else {
         const errorData = await response.json();
@@ -319,6 +322,35 @@ export default function WhitelistApplicationPage() {
                         max="100"
                         className="bg-white/10 border-white/20 text-white placeholder:text-white/50 focus:border-white/40"
                       />
+                    </div>
+                  </div>
+
+                  {/* Character Backstory Section */}
+                  <div className="space-y-4">
+                    <h3 className="text-xl font-semibold text-white border-b border-white/20 pb-2">
+                      Character Backstory
+                    </h3>
+                    <div className="space-y-2">
+                      <Label
+                        htmlFor="character_backstory"
+                        className="text-white font-medium"
+                      >
+                        Tell us about your character's background and story (Minimum 200 words)
+                      </Label>
+                      <Textarea
+                        id="character_backstory"
+                        name="character_backstory"
+                        placeholder="Describe your character's background, motivations, goals, and how they ended up in Hill City. Be creative and detailed - this helps us understand your roleplay style and character depth."
+                        value={formData.character_backstory}
+                        onChange={handleInputChange}
+                        required
+                        minLength={200}
+                        rows={8}
+                        className="bg-white/10 border-white/20 text-white placeholder:text-white/50 focus:border-white/40 resize-none"
+                      />
+                      <p className="text-white/60 text-sm">
+                        Character backstory: {formData.character_backstory.length}/200 words minimum
+                      </p>
                     </div>
                   </div>
 
