@@ -14,6 +14,7 @@ export async function POST(request: NextRequest) {
       "email",
       "fullname",
       "age",
+      "character_backstory",
     ];
     for (const field of requiredFields) {
       if (!body[field]) {
@@ -44,6 +45,13 @@ export async function POST(request: NextRequest) {
             {
               name: "💬 Discord Information",
               value: `**Username:** ${body.discord_name}\n**Member ID:** ${body.discord_id}`,
+              inline: false,
+            },
+            {
+              name: "📖 Character Backstory",
+              value: body.character_backstory.length > 1024 
+                ? `${body.character_backstory.substring(0, 1021)}...` 
+                : body.character_backstory,
               inline: false,
             },
           ],
