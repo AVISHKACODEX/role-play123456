@@ -12,6 +12,7 @@ import LinkPreloader from "@/components/link-preloader";
 import { Toaster } from "@/components/ui/toaster";
 import { ModernToastProvider } from "@/components/modern-toast-provider";
 import { Suspense } from "react";
+import SplashScreen from "@/components/splash-screen";
 
 // Configure fonts - must be called and assigned to const in module scope
 const geistSans = GeistSans({
@@ -95,6 +96,7 @@ export default function RootLayout({
               <AnimatedLogo />
               <LinkPreloader />
               <Toaster />
+              <SplashScreen />
             </ClientOnly>
             <Suspense fallback={null}>{children}</Suspense>
             {/* Global full-width footer */}
