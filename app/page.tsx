@@ -3,6 +3,16 @@
 import Navigation from "@/components/navigation";
 import ApplicationCard from "@/components/application-card";
 import { Button } from "@/components/ui/button";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+} from "@/components/ui/alert-dialog";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import ClientOnly from "@/components/client-only";
@@ -11,10 +21,60 @@ import { useHydration } from "@/hooks/use-hydration";
 export default function HomePage() {
   const [isLoaded, setIsLoaded] = useState(false);
   const isHydrated = useHydration();
+  const [isPlayDialogOpen, setIsPlayDialogOpen] = useState(false);
+  const [dontAskAgain, setDontAskAgain] = useState(false);
+
+  const fivemProtocolUrl = "fivem://connect/cfx.re/join/royam7";
+  const httpFallbackUrl = "https://cfx.re/join/royam7";
 
   useEffect(() => {
     setIsLoaded(true);
   }, []);
+
+  useEffect(() => {
+    try {
+      const stored = localStorage.getItem("hc_fivem_auto_open");
+      if (stored === "true") setDontAskAgain(true);
+    } catch {}
+  }, []);
+
+  const openFiveM = () => {
+    try {
+      window.location.href = fivemProtocolUrl;
+    } catch {}
+
+    try {
+      const iframe = document.createElement("iframe");
+      iframe.style.display = "none";
+      iframe.src = fivemProtocolUrl;
+      document.body.appendChild(iframe);
+      setTimeout(() => iframe.remove(), 3000);
+    } catch {}
+
+    setTimeout(() => {
+      try {
+        window.open(httpFallbackUrl, "_blank");
+      } catch {
+        window.location.assign(httpFallbackUrl);
+      }
+    }, 1200);
+  };
+
+  const handlePlayClick = () => {
+    if (dontAskAgain) {
+      openFiveM();
+      return;
+    }
+    setIsPlayDialogOpen(true);
+  };
+
+  const handleConfirmOpen = () => {
+    try {
+      if (dontAskAgain) localStorage.setItem("hc_fivem_auto_open", "true");
+    } catch {}
+    openFiveM();
+    setIsPlayDialogOpen(false);
+  };
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -245,17 +305,9 @@ export default function HomePage() {
               >
                 <Button
                   className="bg-transparent border-2 border-white text-white px-8 sm:px-16 md:px-24 py-4 sm:py-6 md:py-8 text-lg sm:text-2xl md:text-3xl font-black rounded-full shadow-2xl hover:shadow-white/25 hover:text-black transition-all duration-300 w-full sm:w-auto"
-                  asChild
+                  onClick={handlePlayClick}
                 >
-                  <a href="https://hillcity-royam7.users.cfx.re/" target="_blank" rel="noopener noreferrer" className="relative overflow-hidden group">
-                    <span className="relative z-10">Play Now</span>
-                    <motion.div
-                      className="absolute inset-0 bg-white/10"
-                      initial={{ x: "-100%" }}
-                      whileHover={{ x: "0%" }}
-                      transition={{ duration: 0.3 }}
-                    />
-                  </a>
+                  <span className="relative z-10">Play Now</span>
                 </Button>
               </motion.div>
             </motion.div>
@@ -418,6 +470,36 @@ export default function HomePage() {
               </div>
             </motion.div>
           </motion.div>
+
+          {/* FiveM confirmation dialog on homepage */}
+          <AlertDialog open={isPlayDialogOpen} onOpenChange={setIsPlayDialogOpen}>
+            <AlertDialogContent className="bg-neutral-900/80 backdrop-blur-md border border-white/10 text-white">
+              <AlertDialogHeader>
+                <AlertDialogTitle className="text-2xl font-bold">Open FiveM?</AlertDialogTitle>
+                <AlertDialogDescription className="text-white/70">
+                  We’ll open the FiveM app and connect you to Hill City Roleplay. If you prefer, you can choose to skip this confirmation next time.
+                </AlertDialogDescription>
+              </AlertDialogHeader>
+
+              <div className="mt-4 flex items-center gap-3">
+                <input
+                  id="dont-ask-home"
+                  type="checkbox"
+                  checked={dontAskAgain}
+                  onChange={(e) => setDontAskAgain(e.target.checked)}
+                  className="h-4 w-4 rounded border-white/20 bg-transparent"
+                />
+                <label htmlFor="dont-ask-home" className="text-sm text-white/80 select-none">
+                  Don’t ask me again on this device
+                </label>
+              </div>
+
+              <AlertDialogFooter className="mt-6">
+                <AlertDialogCancel className="bg-white/10 hover:bg-white/20 text-white border-white/20">Cancel</AlertDialogCancel>
+                <AlertDialogAction onClick={handleConfirmOpen} className="bg-white text-neutral-900 hover:bg-gray-100">Open FiveM</AlertDialogAction>
+              </AlertDialogFooter>
+            </AlertDialogContent>
+          </AlertDialog>
         </main>
       </div>
     </div>

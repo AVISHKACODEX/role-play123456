@@ -2,6 +2,16 @@
 
 import Navigation from "@/components/navigation";
 import { Button } from "@/components/ui/button";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+} from "@/components/ui/alert-dialog";
 import { Card } from "@/components/ui/card";
 import Image from "next/image";
 import { useState, useEffect } from "react";
@@ -23,6 +33,67 @@ export default function JoinPage() {
   const [isLoading, setIsLoading] = useState(true);
   const [isLoaded, setIsLoaded] = useState(false);
   const isHydrated = useHydration();
+  const [isPlayDialogOpen, setIsPlayDialogOpen] = useState(false);
+  const [dontAskAgain, setDontAskAgain] = useState(false);
+
+  // Prefer cfx join code for best compatibility with FiveM launcher
+  const fivemProtocolUrl = "fivem://connect/cfx.re/join/royam7";
+  const httpFallbackUrl = "https://cfx.re/join/royam7";
+
+  useEffect(() => {
+    try {
+      const stored = localStorage.getItem("hc_fivem_auto_open");
+      if (stored === "true") {
+        setDontAskAgain(true);
+      }
+    } catch {}
+  }, []);
+
+  const handlePlayClick = () => {
+    if (dontAskAgain) {
+      // Directly try to open FiveM when user opted to skip dialog
+      openFiveM();
+      return;
+    }
+    setIsPlayDialogOpen(true);
+  };
+
+  const openFiveM = () => {
+    // Strategy 1: navigate via location (works in most browsers)
+    try {
+      window.location.href = fivemProtocolUrl;
+    } catch {}
+
+    // Strategy 2: hidden iframe (helps on some browsers)
+    try {
+      const iframe = document.createElement("iframe");
+      iframe.style.display = "none";
+      iframe.src = fivemProtocolUrl;
+      document.body.appendChild(iframe);
+      // Clean up later
+      setTimeout(() => iframe.remove(), 3000);
+    } catch {}
+
+    // Fallback: open official HTTP join link in a new tab after small delay
+    setTimeout(() => {
+      try {
+        window.open(httpFallbackUrl, "_blank");
+      } catch {
+        // last resort
+        window.location.assign(httpFallbackUrl);
+      }
+    }, 1200);
+  };
+
+  const handleConfirmOpen = () => {
+    try {
+      if (dontAskAgain) {
+        localStorage.setItem("hc_fivem_auto_open", "true");
+      }
+    } catch {}
+    openFiveM();
+    setIsPlayDialogOpen(false);
+  };
 
   // Fetch server information
   const fetchServerInfo = async () => {
@@ -231,9 +302,9 @@ export default function JoinPage() {
             <motion.div variants={buttonVariants}>
               <Button
                 className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg font-semibold rounded-lg bg-white text-neutral-900 hover:bg-gray-100 transition"
-                asChild
+                onClick={handlePlayClick}
               >
-                <a href="fivem://connect/your-actual-server-ip:30120">Play Now</a>
+                Play Now
               </Button>
             </motion.div>
             <motion.div variants={buttonVariants}>
@@ -247,6 +318,46 @@ export default function JoinPage() {
               </Button>
             </motion.div>
           </motion.div>
+
+          {/* Modern confirmation dialog for launching FiveM */}
+          <AlertDialog open={isPlayDialogOpen} onOpenChange={setIsPlayDialogOpen}>
+            <AlertDialogContent className="bg-neutral-900/80 backdrop-blur-md border border-white/10 text-white">
+              <AlertDialogHeader>
+                <AlertDialogTitle className="text-2xl font-bold">
+                  Open FiveM?
+                </AlertDialogTitle>
+                <AlertDialogDescription className="text-white/70">
+                  We’ll open the FiveM app and connect you to Hill City Roleplay.
+                  If you prefer, you can choose to skip this confirmation next time.
+                </AlertDialogDescription>
+              </AlertDialogHeader>
+
+              <div className="mt-4 flex items-center gap-3">
+                <input
+                  id="dont-ask"
+                  type="checkbox"
+                  checked={dontAskAgain}
+                  onChange={(e) => setDontAskAgain(e.target.checked)}
+                  className="h-4 w-4 rounded border-white/20 bg-transparent"
+                />
+                <label htmlFor="dont-ask" className="text-sm text-white/80 select-none">
+                  Don’t ask me again on this device
+                </label>
+              </div>
+
+              <AlertDialogFooter className="mt-6">
+                <AlertDialogCancel className="bg-white/10 hover:bg-white/20 text-white border-white/20">
+                  Cancel
+                </AlertDialogCancel>
+                <AlertDialogAction
+                  onClick={handleConfirmOpen}
+                  className="bg-white text-neutral-900 hover:bg-gray-100"
+                >
+                  Open FiveM
+                </AlertDialogAction>
+              </AlertDialogFooter>
+            </AlertDialogContent>
+          </AlertDialog>
 
           {/* Info Cards */}
           <motion.div
