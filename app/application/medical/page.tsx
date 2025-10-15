@@ -305,7 +305,7 @@ export default function MedicalApplicationPage() {
                         Please summarize the outline of your upbringing,
                         academic & professional achievements and highlights in
                         your life until now and your motivation behind your
-                        intention to join Ceylon MD.
+                        intention to join HillCity MD.
                       </p>
                     </div>
 

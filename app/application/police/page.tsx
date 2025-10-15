@@ -268,7 +268,7 @@ export default function PoliceApplicationPage() {
                           id="discordId"
                           name="discordId"
                           type="text"
-                          placeholder="Go to CeylonRP Discord Server > Go to bot command only channel > Type !user > click ENTER > copy & Enter your Member ID"
+                          placeholder="Go to HillCityRP Discord Server > Go to bot command only channel > Type !user > click ENTER > copy & Enter your Member ID"
                           value={formData.discordId}
                           onChange={handleInputChange}
                           required
