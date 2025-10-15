@@ -97,6 +97,31 @@ export default function RootLayout({
               <Toaster />
             </ClientOnly>
             <Suspense fallback={null}>{children}</Suspense>
+            {/* Global full-width footer */}
+            <footer className="fixed bottom-0 left-0 right-0 z-50">
+              <div className="w-full bg-black/40 backdrop-blur-md border-t border-white/10">
+                <div className="max-w-7xl mx-auto px-4 py-2 flex items-center justify-center gap-2 sm:gap-3 text-xs sm:text-sm">
+                  <span className="text-white/70">Developed by</span>
+                  <a
+                    href="https://eganexsoftware.netlify.app/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-white font-semibold hover:underline"
+                  >
+                    Eganex Softwares
+                  </a>
+                  <span className="text-white/30">•</span>
+                  <a
+                    href="https://www.facebook.com/share/1G7z1GPojm/?mibextid=wwXIfr"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-white/80 hover:underline"
+                  >
+                    Facebook
+                  </a>
+                </div>
+              </div>
+            </footer>
           </ModernToastProvider>
         </ThemeProvider>
         <Analytics />
