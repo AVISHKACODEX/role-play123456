@@ -304,7 +304,7 @@ export default function ContactPage() {
                   <Button
                     className="w-full bg-[#5865F2] hover:bg-[#4752C4] text-white py-4 text-lg font-medium rounded-xl transition-all duration-200"
                     onClick={() =>
-                      window.open("https://discord.gg/hillcityrp", "_blank")
+                      window.open("https://discord.gg/hillcity", "_blank")
                     }
                   >
                     Join Discord Server
@@ -493,7 +493,7 @@ export default function ContactPage() {
                 <Button
                   className="bg-white/20 hover:bg-white/30 text-white border border-white/30 px-8 py-3 text-lg font-medium rounded-full transition-all duration-200"
                   onClick={() =>
-                    window.open("https://discord.gg/hillcityrp", "_blank")
+                    window.open("https://discord.gg/hillcity", "_blank")
                   }
                 >
                   Join Our Community

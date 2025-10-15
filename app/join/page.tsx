@@ -240,7 +240,7 @@ export default function JoinPage() {
               <Button
                 className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg font-semibold rounded-lg bg-[#5865F2] text-white hover:bg-[#4752C4] transition"
                 onClick={() =>
-                  window.open("https://discord.gg/hillcityrp", "_blank")
+                  window.open("https://discord.gg/hillcity", "_blank")
                 }
               >
                 Join Discord
@@ -303,7 +303,7 @@ export default function JoinPage() {
                   <Button
                     className="w-full bg-[#5865F2] text-white hover:bg-[#4752C4] mt-auto"
                     onClick={() =>
-                      window.open("https://discord.gg/hillcityrp", "_blank")
+                      window.open("https://discord.gg/hillcity", "_blank")
                     }
                   >
                     Join Discord
