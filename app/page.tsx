@@ -247,8 +247,8 @@ export default function HomePage() {
                   className="bg-transparent border-2 border-white text-white px-8 sm:px-16 md:px-24 py-4 sm:py-6 md:py-8 text-lg sm:text-2xl md:text-3xl font-black rounded-full shadow-2xl hover:shadow-white/25 hover:text-black transition-all duration-300 w-full sm:w-auto"
                   asChild
                 >
-                  <a href="/join" className="relative overflow-hidden group">
-                    <span className="relative z-10">JOIN NOW</span>
+                  <a href="https://hillcity-royam7.users.cfx.re/" target="_blank" rel="noopener noreferrer" className="relative overflow-hidden group">
+                    <span className="relative z-10">Play Now</span>
                     <motion.div
                       className="absolute inset-0 bg-white/10"
                       initial={{ x: "-100%" }}
