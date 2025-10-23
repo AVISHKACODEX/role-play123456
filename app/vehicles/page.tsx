@@ -9,7 +9,7 @@ import Image from "next/image";
 
 // Vehicle data with prices and images
 const vehicles = [
-  // RS 2000 - Premium vehicles
+  // RS 5000 - Premium vehicles
   {
     id: "bugatti",
     name: "Bugatti",
@@ -58,7 +58,7 @@ const vehicles = [
     backImage: "/car_img/v8_back.png",
     category: "premium",
   },
-  // RS 1500 - Standard vehicles
+  // RS 3500 - Standard vehicles
   {
     id: "bentley",
     name: "Bentley",
@@ -115,7 +115,7 @@ const vehicles = [
     backImage: "/car_img/rubiconjeep_back.png",
     category: "standard",
   },
-  // RS 1000 - Bikes
+  // RS 3000 - Bikes
   {
     id: "bmw_s1000rr",
     name: "BMW S1000RR",
@@ -167,9 +167,9 @@ function VehicleCard({ vehicle, index }: VehicleCardProps) {
       <div className="absolute top-4 right-4 z-10" suppressHydrationWarning>
         <div
           className={`px-4 py-2 rounded-full text-base font-bold ${
-            vehicle.price === 2000
+            vehicle.price === 5000
               ? "bg-yellow-500/90 text-black"
-              : vehicle.price === 1500
+              : vehicle.price === 3500
               ? "bg-blue-500/90 text-white"
               : "bg-green-500/90 text-white"
           }`}
@@ -382,7 +382,7 @@ export default function VehiclesPage() {
                   className="w-4 h-4 bg-yellow-500/90 rounded"
                   suppressHydrationWarning
                 ></div>
-                <span className="text-white/80 text-sm">RS 2000 - Premium</span>
+                <span className="text-white/80 text-sm">RS 5000 - Premium</span>
               </div>
               <div className="flex items-center gap-2" suppressHydrationWarning>
                 <div
@@ -390,7 +390,7 @@ export default function VehiclesPage() {
                   suppressHydrationWarning
                 ></div>
                 <span className="text-white/80 text-sm">
-                  RS 1500 - Standard
+                  RS 3500 - Standard
                 </span>
               </div>
               <div className="flex items-center gap-2" suppressHydrationWarning>
@@ -398,7 +398,7 @@ export default function VehiclesPage() {
                   className="w-4 h-4 bg-green-500/90 rounded"
                   suppressHydrationWarning
                 ></div>
-                <span className="text-white/80 text-sm">RS 1000 - Bikes</span>
+                <span className="text-white/80 text-sm">RS 3000 - Bikes</span>
               </div>
             </motion.div>
 
