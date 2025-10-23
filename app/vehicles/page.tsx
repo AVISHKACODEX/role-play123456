@@ -13,7 +13,7 @@ const vehicles = [
   {
     id: "bugatti",
     name: "Bugatti",
-    price: 2000,
+    price: 5000,
     frontImage: "/car_img/bugatti_front.png",
     backImage: "/car_img/bugatti_back.png",
     category: "premium",
@@ -21,7 +21,7 @@ const vehicles = [
   {
     id: "lamborghini",
     name: "Lamborghini Urus",
-    price: 2000,
+    price: 5000,
     frontImage: "/car_img/lamborghini_urus_frot.png",
     backImage: "/car_img/lamborghini_urus_back.png",
     category: "premium",
@@ -29,7 +29,7 @@ const vehicles = [
   {
     id: "gtr",
     name: "Nissan GTR",
-    price: 2000,
+    price: 5000,
     frontImage: "/car_img/gtr_front.png",
     backImage: "/car_img/gtr_back.png",
     category: "premium",
@@ -37,7 +37,7 @@ const vehicles = [
   {
     id: "bmw",
     name: "BMW",
-    price: 2000,
+    price: 5000,
     frontImage: "/car_img/bmw_front.png",
     backImage: "/car_img/bmw_back.png",
     category: "premium",
@@ -45,7 +45,7 @@ const vehicles = [
   {
     id: "benz",
     name: "Mercedes Benz",
-    price: 2000,
+    price: 5000,
     frontImage: "/car_img/benz_front.png",
     backImage: "/car_img/benz_back.png",
     category: "premium",
@@ -53,7 +53,7 @@ const vehicles = [
   {
     id: "v8",
     name: "V8",
-    price: 2000,
+    price: 5000,
     frontImage: "/car_img/v8_front.png",
     backImage: "/car_img/v8_back.png",
     category: "premium",
@@ -62,7 +62,7 @@ const vehicles = [
   {
     id: "bentley",
     name: "Bentley",
-    price: 1500,
+    price: 3500,
     frontImage: "/car_img/bentley_front.png",
     backImage: "/car_img/bentley_back.png",
     category: "standard",
@@ -70,7 +70,7 @@ const vehicles = [
   {
     id: "masarati",
     name: "Maserati",
-    price: 1500,
+    price: 3500,
     frontImage: "/car_img/masarati_front.png",
     backImage: "/car_img/masarati_back.png",
     category: "standard",
@@ -78,7 +78,7 @@ const vehicles = [
   {
     id: "supra",
     name: "Toyota Supra",
-    price: 1500,
+    price: 3500,
     frontImage: "/car_img/supra_front.png",
     backImage: "/car_img/supra_back.png",
     category: "standard",
@@ -86,7 +86,7 @@ const vehicles = [
   {
     id: "mazda",
     name: "Mazda",
-    price: 1500,
+    price: 3500,
     frontImage: "/car_img/mazda_front.png",
     backImage: "/car_img/mazda_back.png",
     category: "standard",
@@ -94,7 +94,7 @@ const vehicles = [
   {
     id: "subaru",
     name: "Subaru",
-    price: 1500,
+    price: 3500,
     frontImage: "/car_img/subaru_front.png",
     backImage: "/car_img/subaru_back.png",
     category: "standard",
@@ -102,7 +102,7 @@ const vehicles = [
   {
     id: "nissanjeep",
     name: "Nissan Jeep",
-    price: 1500,
+    price: 3500,
     frontImage: "/car_img/nissanjeep_front.png",
     backImage: "/car_img/nissanjeep_back.png",
     category: "standard",
@@ -110,7 +110,7 @@ const vehicles = [
   {
     id: "rubiconjeep",
     name: "Rubicon Jeep",
-    price: 1500,
+    price: 3500,
     frontImage: "/car_img/rubiconjeep_front.png",
     backImage: "/car_img/rubiconjeep_back.png",
     category: "standard",
@@ -119,7 +119,7 @@ const vehicles = [
   {
     id: "bmw_s1000rr",
     name: "BMW S1000RR",
-    price: 1000,
+    price: 3000,
     frontImage: "/car_img/Bmw_S1000rr_bike_front.png",
     backImage: "/car_img/Bmw_S1000rr_bike_back.png",
     category: "bike",
@@ -127,7 +127,7 @@ const vehicles = [
   {
     id: "ducati",
     name: "Ducati Bike",
-    price: 1000,
+    price: 3000,
     frontImage: "/car_img/dukati_bike_front.png",
     backImage: "/car_img/dukati_bike_back.png",
     category: "bike",
@@ -135,7 +135,7 @@ const vehicles = [
   {
     id: "ninja_h2",
     name: "Ninja H2",
-    price: 1000,
+    price: 3000,
     frontImage: "/car_img/ninja_h2_bike_front.png",
     backImage: "/car_img/ninja_h2_bike_back.png",
     category: "bike",
